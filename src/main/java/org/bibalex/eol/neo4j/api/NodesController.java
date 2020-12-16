@@ -219,6 +219,11 @@ public class NodesController {
         return service.getNodePageId(generatedNodeId);
     }
 
+    @RequestMapping(value="/getTraitId", method = RequestMethod.GET, produces = "application/json")
+    public int getTraitId(){
+        return service.getTraitId();
+    }
+
     @RequestMapping(value="/getNativeVirusNode", method = RequestMethod.GET, produces = "application/json")
     public ArrayList<Node> getNativeVirusNode() {
         return service.getNativeVirusNode();

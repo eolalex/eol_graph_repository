@@ -612,6 +612,20 @@ public class Neo4jCommon {
         }
         return pages;
     }
+
+    public int getTraitId(){
+       String query = "MATCH(c:GlobalUniqueId) SET c.trait_id = c.trait_id + 1 RETURN c.trait_id";
+       StatementResult result = getSession().run(query);
+       if (result.hasNext()) {
+            Record record = result.next();
+            return record.get("c.trait_id").asInt();
+        } else {
+            logger.debug("Problem occurred while adding traitId");
+            return -1;
+        }
+       
+    }
+
     public List<HashMap<Integer, Integer>> getNodeAncestors(List<Integer> generatedNodesIds) {
         List<HashMap<Integer, Integer>> nodes = new ArrayList<HashMap<Integer, Integer>>();
         for(Integer gNodeId : generatedNodesIds) {

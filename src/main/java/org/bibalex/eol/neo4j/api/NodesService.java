@@ -226,6 +226,10 @@ public class NodesService {
         return TaxonM.addPageIdtoNode(generatedNodeId, -1);
     }
 
+    public int getTraitId(){
+        return Neo4jCommon.getTraitId();
+    }
+
     public ArrayList<Node> getNativeVirusNode() {
         return parser.getLabeledNodesByAttribute("", Constants.VIRUS_LABEL, new ArrayList<String>());
     }
